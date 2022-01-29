@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<flashing>
+  <header>
+    <phone_model model="rjames_vzw"/>
+    <software_version version="rjames_vzw-user 8.0.0 ODPS27.91-121-16-14 16 release-keysM8917_35.45.05.99R"/>
+    <subsidy_lock_config MD5="c1c8475c6b7947cfb57384bf45e15e1a" name="slcf_rev_d_vzw_v2.4.nvm"/>
+    <regulatory_config SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709" name="regulatory_info_default.png"/>
+    <sparsing enabled="true" max-sparse-size="535822336"/>
+    <interfaces>
+      <interface name="AP"/>
+    </interfaces>
+  </header>
+  <steps interface="AP">
+    <step operation="getvar" var="max-sparse-size"/>
+    <step operation="oem" var="fb_mode_set"/>
+    <step MD5="0e020bf5ece382feeb85fdf1328969f4" filename="gpt.bin" operation="flash" partition="partition"/>
+    <step MD5="bbf41565d6bbe9a03b4c74ac771274f2" filename="bootloader.img" operation="flash" partition="bootloader"/>
+    <step MD5="d2ee35d008956c68b37b939bc11cac02" filename="NON-HLOS.bin" operation="flash" partition="modem"/>
+    <step MD5="6b34e1921d15148a3ca4b071999d2e1b" filename="fsg.mbn" operation="flash" partition="fsg"/>
+    <step operation="erase" partition="modemst1"/>
+    <step operation="erase" partition="modemst2"/>
+    <step MD5="bcde8ec69dc65fa9e215906dbbaba873" filename="adspso.bin" operation="flash" partition="dsp"/>
+    <step MD5="584d6d4e9996e7698c1da0ab7ca07fca" filename="logo.bin" operation="flash" partition="logo"/>
+    <step MD5="ac3b886665ddc978dad18e2c857879aa" filename="boot.img" operation="flash" partition="boot"/>
+    <step MD5="f2e25b6c75da59d849f4d2af7fb31a76" filename="recovery.img" operation="flash" partition="recovery"/>
+    <step MD5="f169631dbc52288c21d1ac2c22b450a6" filename="system.img_sparsechunk.0" operation="flash" partition="system"/>
+    <step MD5="12f5be8518ead9bcd5a58c7ddd5bdce8" filename="system.img_sparsechunk.1" operation="flash" partition="system"/>
+    <step MD5="1aeb0aa5803ce15f8d6571c9b2b75c3b" filename="system.img_sparsechunk.2" operation="flash" partition="system"/>
+    <step MD5="4979d192b2bfebc8fc5286dd0e5b2b29" filename="system.img_sparsechunk.3" operation="flash" partition="system"/>
+    <step MD5="85f93ed917dc13bb7c9704ba67489f0b" filename="system.img_sparsechunk.4" operation="flash" partition="system"/>
+    <step MD5="57de1367fe46f08bdb1767499a7f79eb" filename="vendor.img" operation="flash" partition="vendor"/>
+    <step MD5="826223dbbfe7c0915142eb5ed05c49e4" filename="oem.img" operation="flash" partition="oem"/>
+    <step operation="erase" partition="cache"/>
+    <step operation="erase" partition="userdata"/>
+    <step operation="erase" partition="DDR"/>
+    <step operation="oem" var="fb_mode_clear"/>
+  </steps>
+</flashing>
