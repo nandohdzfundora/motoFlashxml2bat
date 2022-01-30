@@ -1,7 +1,7 @@
 from re import S
 import xml.etree.ElementTree as ET
 
-arc = ET.parse('flashfile.xml').getroot()
+arc = ET.parse('../flashfile.xml').getroot()
 
 
 def getFlash(step):
@@ -30,7 +30,7 @@ for child in stepList:
     order+='\n'
     steps+= order
 
-f = open("flashall.bat", "w")
+f = open("../flashall.bat", "w")
 f.write(steps)
 f.close()
      
